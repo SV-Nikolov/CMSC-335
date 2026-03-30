@@ -1,0 +1,98 @@
+CMSC 335 - Homework 2 Work Log
+Author: GitHub Copilot (GPT-5.3-Codex)
+Date: 2026-03-31
+
+Purpose
+- Preserve a full history of the Homework 2 workflow, decisions, revisions, and final artifact preparation.
+- Provide future context for regenerating or updating the submission package.
+
+Repository and Context Recovery
+1. Scanned repository structure and commit history to recover prior project context.
+2. Located Homework 2 folder containing:
+   - Homework 2.pdf (assignment)
+   - Grading Rubric.pdf
+3. No persisted prior session memory was available, so context was reconstructed from files and git state.
+
+Assignment and Rubric Intake
+1. PDF text extraction setup:
+   - Python available in environment.
+   - Installed pypdf for extraction.
+2. Extracted and reviewed assignment and rubric content.
+3. Identified grading requirements:
+   - 10 problems, 5 points each.
+   - Every problem must explain both:
+     a) what is wrong
+     b) how to fix it
+   - Problem 3 requires at least two valid corrections.
+   - Problem 8 requires two legal ways to set final value.
+   - Problem 9 requires two effective fixes.
+
+Solution Drafting Phase
+1. Created a rubric-aligned answer draft covering Problems 1-10.
+2. Ensured direct rubric coverage for all required explanations.
+3. Included UML diagram content and code corrections.
+
+Professional Document Generation Phase
+1. User requested non-markdown final format and Mermaid diagrams.
+2. Implemented a Python PDF generator using ReportLab:
+   - File: generate_homework2_pdf.py
+   - Styled layout with headings, metadata, readable body text, and code formatting.
+3. Created Mermaid source files:
+   - uml_class_hierarchy.mmd
+   - uml_sequence_tostring.mmd
+4. Rendered Mermaid diagrams to PNG via Kroki API and embedded in PDF.
+
+Iteration and Design Improvements (Per User Feedback)
+1. Improved readability and styling:
+   - Better spacing, margins, typography, and hierarchy.
+2. Changed metadata language:
+   - Removed "Rubric-Aligned Submission" wording.
+   - Updated Document Type label.
+3. Date adjustment:
+   - Set earlier date (March 28, 2026) per request.
+4. Diagram quality improvements:
+   - Increased Mermaid render scale.
+   - Added robust request behavior (user-agent/retry patterns).
+   - Preserved image aspect ratio in PDF placement to reduce blur.
+5. Additional polish requests completed:
+   - Removed footer phrase "Prepared as a professional homework document."
+   - Set file type value to "PDF".
+   - Colored section labels:
+     - "What is wrong" in red
+     - "How to fix" in green
+   - Reduced visual dominance of bullet markers.
+   - Enclosed code content in bordered boxes for readability.
+6. Final layout request completed:
+   - Removed rubric compliance matrix from document end.
+   - Added keep-together logic so each problem stays visually grouped and does not split awkwardly.
+
+Final Deliverables Retained
+- Homework 2.pdf
+- Grading Rubric.pdf
+- Homework2_Nikolov.pdf (final polished PDF submission output)
+- generate_homework2_pdf.py (rebuild script)
+- uml_class_hierarchy.mmd
+- uml_sequence_tostring.mmd
+- uml_class_hierarchy.png
+- uml_sequence_tostring.png
+- WORK_LOG.txt (this file)
+
+Cleanup Performed
+Removed temporary/intermediate artifacts:
+- _terminal_test.txt
+- Homework2_build_stamp.txt
+- test_kroki.png
+- Homework 2.txt
+- Grading Rubric.txt
+- Homework2_Answers.md
+
+How to Rebuild PDF Later
+1. Open terminal in Homework 2 folder.
+2. Run:
+   python generate_homework2_pdf.py
+3. Output PDF will be regenerated using current script settings.
+
+Notes
+- Mermaid rendering depends on network access to Kroki endpoint.
+- If network issues occur, rerun generation command.
+- Core content is already finalized to align with rubric requirements and user style preferences.

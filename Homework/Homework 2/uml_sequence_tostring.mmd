@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant Main as H2ClassA.main
+    participant A as H2ClassA
+    participant B as H2ClassB
+
+    Main->>A: create H2ClassA()
+    loop for each value in [4,3,7,5,99,3]
+        Main->>B: create H2ClassB(m)
+        Main->>A: list.add(B)
+    end
+    Main->>A: System.out.println(A)
+    A->>A: toString()
+    loop each element in list
+        A->>B: toString()
+        B-->>A: String value
+    end
+    A-->>Main: "4 3 7 5 99 3"

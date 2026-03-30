@@ -1,0 +1,46 @@
+classDiagram
+    direction TB
+
+    class Shape {
+      <<abstract>>
+      #int dimensions
+      +String getDescription()
+    }
+
+    class TwoDimensionalShape {
+      <<abstract>>
+      #double area
+      +double getArea()
+      +void calculateArea()
+    }
+
+    class ThreeDimensionalShape {
+      <<abstract>>
+      #double volume
+      +double getVolume()
+      +void calculateVolume()
+    }
+
+    class Circle
+    class Rectangle
+    class Square
+    class Triangle
+    class Sphere
+    class Cube
+    class Cone
+    class Cylinder
+    class Torus
+
+    Shape <|-- TwoDimensionalShape
+    Shape <|-- ThreeDimensionalShape
+
+    TwoDimensionalShape <|-- Circle
+    TwoDimensionalShape <|-- Rectangle
+    TwoDimensionalShape <|-- Square
+    TwoDimensionalShape <|-- Triangle
+
+    ThreeDimensionalShape <|-- Sphere
+    ThreeDimensionalShape <|-- Cube
+    ThreeDimensionalShape <|-- Cone
+    ThreeDimensionalShape <|-- Cylinder
+    ThreeDimensionalShape <|-- Torus
