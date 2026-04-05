@@ -1,0 +1,132 @@
+classDiagram
+    class Shape {
+        <<abstract>>
+        #dimensions: int
+        +Shape(dimensions: int)
+        +getDimensions() int
+        +getDescription() String
+    }
+
+    class TwoDimensionalShape {
+        <<abstract>>
+        #area: double
+        +TwoDimensionalShape()
+        +getArea() double
+        +calculateArea() void
+    }
+
+    class ThreeDimensionalShape {
+        <<abstract>>
+        #volume: double
+        +ThreeDimensionalShape()
+        +getVolume() double
+        +calculateVolume() void
+    }
+
+    class Circle {
+        -radius: double
+        +Circle(radius: double)
+        +calculateArea() void
+        +getDescription() String
+    }
+
+    class Rectangle {
+        -length: double
+        -width: double
+        +Rectangle(length: double, width: double)
+        +calculateArea() void
+        +getDescription() String
+    }
+
+    class Square {
+        -side: double
+        +Square(side: double)
+        +calculateArea() void
+        +getDescription() String
+    }
+
+    class Triangle {
+        -base: double
+        -height: double
+        +Triangle(base: double, height: double)
+        +calculateArea() void
+        +getDescription() String
+    }
+
+    class Sphere {
+        -radius: double
+        +Sphere(radius: double)
+        +calculateVolume() void
+        +getDescription() String
+    }
+
+    class Cube {
+        -side: double
+        +Cube(side: double)
+        +calculateVolume() void
+        +getDescription() String
+    }
+
+    class Cone {
+        -radius: double
+        -height: double
+        +Cone(radius: double, height: double)
+        +calculateVolume() void
+        +getDescription() String
+    }
+
+    class Cylinder {
+        -radius: double
+        -height: double
+        +Cylinder(radius: double, height: double)
+        +calculateVolume() void
+        +getDescription() String
+    }
+
+    class Torus {
+        -majorRadius: double
+        -minorRadius: double
+        +Torus(majorRadius: double, minorRadius: double)
+        +calculateVolume() void
+        +getDescription() String
+    }
+
+    class ShapeDisplayPanel {
+        -shapeName: String
+        -parameterOne: double
+        -parameterTwo: double
+        +setShapeToDisplay(shapeName: String, parameterOne: double, parameterTwo: double) void
+        +paintComponent(graphics: Graphics) void
+    }
+
+    class ShapesGuiProgram {
+        -shapeSelector: JComboBox~String~
+        -firstParameterDropdown: JComboBox~Double~
+        -secondParameterDropdown: JComboBox~Double~
+        -unitSelector: JComboBox~String~
+        -resultLabel: JLabel
+        -shapeDisplayPanel: ShapeDisplayPanel
+        +ShapesGuiProgram()
+        -initializeUi() void
+        -updateParameterLabels(shapeName: String) void
+        -buildAndRenderShape() void
+        -clearDisplay() void
+        -resetDefaults() void
+        +main(args: String[]) void
+    }
+
+    Shape <|-- TwoDimensionalShape
+    Shape <|-- ThreeDimensionalShape
+
+    TwoDimensionalShape <|-- Circle
+    TwoDimensionalShape <|-- Rectangle
+    TwoDimensionalShape <|-- Square
+    TwoDimensionalShape <|-- Triangle
+
+    ThreeDimensionalShape <|-- Sphere
+    ThreeDimensionalShape <|-- Cube
+    ThreeDimensionalShape <|-- Cone
+    ThreeDimensionalShape <|-- Cylinder
+    ThreeDimensionalShape <|-- Torus
+
+    ShapesGuiProgram *-- ShapeDisplayPanel
