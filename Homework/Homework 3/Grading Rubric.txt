@@ -1,0 +1,118 @@
+--- Page 1 ---
+Homework 3
+Course: CMSC 335 7380 Object-Oriented and Concurrent Programming (2262)
+Criteria Meets Does not meet Criterion Score
+Problem 1 / 5
+Problem 2 / 5
+Problem 3 / 5
+5 points
+Lists the events associated
+with each provided
+component.
+0 points
+Does not list the events asso-
+ciated with each provided
+component.
+5 points
+Lists the methods JTable
+implements.
+Lists the methods which are
+required by the interfaces im-
+plemented by the JTable class
+beyond those interfaces im-
+plemented by the various par-
+ent classes of JTable.
+0 points
+Does not list the methods
+JTable implements.
+Does not list the methods
+which are required by the in-
+terfaces implemented by the
+JTable class beyond those in-
+terfaces implemented by the
+various parent classes of
+JTable.
+5 points
+Addresses the differences
+among the various layout
+managers.
+Focuses on their behavior as
+their container is resized.
+0 points
+Does not address the differ-
+ences among the various lay-
+out managers.
+Does not focus on their be-
+havior as their container is
+resized.
+4/21/26, 9:42 PM Homework 3 - CMSC 335 7380 Object-Oriented and Concurrent Programming (2262) - UMGC Learning Management System
+https://learn.umgc.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=1890373&grpid=0&isprv=0&bp=0&ou=1375532 1/3
+--- Page 2 ---
+Total / 50
+Criteria Meets Does not meet Criterion Score
+Problem 4 / 10
+Problem 5 / 10
+Problem 6 / 5
+Problem 7 / 10
+10 points
+Explains what is wrong with
+everybody doing the actions
+provided.
+Explains how the actions be
+fixed to avoid deadlocks.
+Explains if the solution pro-
+vided is starvation free.
+0 points
+Does not explain what is
+wrong with everybody doing
+the actions provided.
+Does not explain how the ac-
+tions be fixed to avoid
+deadlocks.
+Does not explain if the solu-
+tion provided is starvation
+free.
+10 points
+Explains what methods a
+class implementing the
+java.util.concurrent.locks.Lock
+interface must implement.
+Describes some of the ex-
+pected characteristics of each
+of the methods of this
+interface.
+0 points
+Does not explain what meth-
+ods a class implementing the
+java.util.concurrent.locks.Lock
+interface must implement.
+Does not describe some of
+the expected characteristics
+of each of the methods of
+this interface.
+5 points
+Explains what the JVM does
+when it encounters a syn-
+chronized directive.
+0 points
+Does not explain what the
+JVM does when it encounters
+a synchronized directive.
+10 points
+Explains difference between
+Lock interface and synchro-
+nized keyword.
+0 points
+Does not explains difference
+between Lock interface and
+synchronized keyword.
+4/21/26, 9:42 PM Homework 3 - CMSC 335 7380 Object-Oriented and Concurrent Programming (2262) - UMGC Learning Management System
+https://learn.umgc.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=1890373&grpid=0&isprv=0&bp=0&ou=1375532 2/3
+--- Page 3 ---
+Overall Score
+Meets
+35 points minimum
+Does not meet
+0 points minimum
+4/21/26, 9:42 PM Homework 3 - CMSC 335 7380 Object-Oriented and Concurrent Programming (2262) - UMGC Learning Management System
+https://learn.umgc.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=1890373&grpid=0&isprv=0&bp=0&ou=1375532 3/3

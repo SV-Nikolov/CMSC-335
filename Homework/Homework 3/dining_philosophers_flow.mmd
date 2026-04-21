@@ -1,0 +1,10 @@
+flowchart TD
+    A[All philosophers think] --> B[Each picks up left chopstick]
+    B --> C{Right chopstick available?}
+    C -- No --> D[Wait for right chopstick]
+    D --> E[Potential circular wait]
+    E --> F[Deadlock risk]
+
+    C -- Yes --> G[Eat]
+    G --> H[Release both chopsticks]
+    H --> A

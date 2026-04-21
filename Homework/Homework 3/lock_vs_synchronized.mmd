@@ -1,0 +1,12 @@
+flowchart LR
+    L[Lock Interface] --> L1[Explicit lock/unlock]
+    L --> L2[tryLock / timed lock]
+    L --> L3[Interruptible acquisition]
+    L --> L4[Multiple Condition queues]
+    L --> L5[Optional fairness]
+
+    S[synchronized] --> S1[Implicit monitor management]
+    S --> S2[No timed try-acquire API]
+    S --> S3[No explicit interruptible acquire]
+    S --> S4[Single monitor condition queue]
+    S --> S5[Simpler syntax, lower misuse risk]
