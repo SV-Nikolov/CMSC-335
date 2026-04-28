@@ -4,14 +4,36 @@ Homework 4 PDF Generator - Professional CMSC 335 Submission
 Generates a styled PDF with answers to threading problems.
 """
 
+from pathlib import Path
+
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import inch
-from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer, PageBreak, KeepTogether
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer, PageBreak, KeepTogether, Image
 from reportlab.lib import colors
 from reportlab.pdfgen import canvas
 from reportlab.lib.enums import TA_CENTER, TA_LEFT, TA_JUSTIFY
 from datetime import datetime, timedelta
+
+
+def scaled_image(image_path, max_width, max_height):
+    image = Image(str(image_path))
+    aspect = image.imageWidth / image.imageHeight
+    if image.imageWidth > image.imageHeight:
+        image.drawWidth = min(max_width, image.imageWidth)
+        image.drawHeight = image.drawWidth / aspect
+    else:
+        image.drawHeight = min(max_height, image.imageHeight)
+        image.drawWidth = image.drawHeight * aspect
+
+    if image.drawWidth > max_width:
+        image.drawWidth = max_width
+        image.drawHeight = image.drawWidth / aspect
+    if image.drawHeight > max_height:
+        image.drawHeight = max_height
+        image.drawWidth = image.drawHeight * aspect
+
+    return image
 
 def create_pdf():
     # PDF setup
@@ -192,6 +214,50 @@ def create_pdf():
         ])
     ]
     story.extend(problem5_content)
+
+    # Execution screenshots
+    story.append(PageBreak())
+    story.append(Paragraph("Actual Execution Screenshots", problem_style))
+    story.append(Paragraph(
+        "These screenshots show real runs of the program modes used to verify the thread behavior described above.",
+        body_style,
+    ))
+    story.append(Spacer(1, 0.15 * inch))
+
+    base_dir = Path(__file__).resolve().parent
+    screenshot_specs = [
+        ("baseline.png", "Problem 1: start()"),
+        ("run.png", "Problem 2: run()"),
+        ("yield.png", "Problem 3: Thread.yield()"),
+        ("sleepChar.png", "Problem 4: sleep after print"),
+        ("sleepMain.png", "Problem 5: sleep after thread creation"),
+    ]
+
+    figure_rows = []
+    current_row = []
+    for filename, caption in screenshot_specs:
+        figure = [
+            Paragraph(f"<b>{caption}</b>", ParagraphStyle('FigureCaption', parent=styles['Normal'], fontSize=9, alignment=TA_CENTER, spaceAfter=4)),
+            scaled_image(base_dir / filename, 3.05 * inch, 2.1 * inch),
+        ]
+        current_row.append(figure)
+        if len(current_row) == 2:
+            figure_rows.append(current_row)
+            current_row = []
+
+    if current_row:
+        current_row.append("")
+        figure_rows.append(current_row)
+
+    figures_table = Table(figure_rows, colWidths=[3.2 * inch, 3.2 * inch], hAlign='LEFT')
+    figures_table.setStyle(TableStyle([
+        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+        ('LEFTPADDING', (0, 0), (-1, -1), 0),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 0),
+        ('TOPPADDING', (0, 0), (-1, -1), 6),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 10),
+    ]))
+    story.append(figures_table)
     
     # Build PDF
     doc.build(story)
