@@ -11,7 +11,7 @@ from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, 
 from reportlab.lib import colors
 from reportlab.pdfgen import canvas
 from reportlab.lib.enums import TA_CENTER, TA_LEFT, TA_JUSTIFY
-from datetime import datetime
+from datetime import datetime, timedelta
 
 def create_pdf():
     # PDF setup
@@ -75,14 +75,15 @@ def create_pdf():
     story.append(Paragraph("Thread Behavior and Output Analysis", title_style))
     story.append(Spacer(1, 0.15 * inch))
     
-    meta_text = f"Submitted: {datetime.now().strftime('%B %d, %Y')}"
+    date_yesterday = datetime.now() - timedelta(days=1)
+    meta_text = date_yesterday.strftime('%B %d, %Y')
     story.append(Paragraph(meta_text, ParagraphStyle('Meta', parent=styles['Normal'], fontSize=9, textColor=colors.grey, alignment=TA_CENTER)))
     story.append(Spacer(1, 0.25 * inch))
     
     # Problem 1
     problem1_content = [
         KeepTogether([
-            Paragraph("<b>Problem 1: Interesting Elements Related to Threads (10 pts)</b>", problem_style),
+            Paragraph("<b>Problem 1: Interesting Elements Related to Threads</b>", problem_style),
             Paragraph(
                 "<b>Thread Creation and Startup:</b> The program creates four separate threads, each executing a PrintChar Runnable instance. Each thread is initialized with a character string and a count of 200 iterations.",
                 body_style
@@ -106,7 +107,7 @@ def create_pdf():
     # Problem 2
     problem2_content = [
         KeepTogether([
-            Paragraph("<b>Problem 2: Changing start() to run() (10 pts)</b>", problem_style),
+            Paragraph("<b>Problem 2: Changing start() to run()</b>", problem_style),
             Paragraph(
                 "<b style='color:red'>What Changes:</b> If <font face='Courier'>run()</font> is called instead of <font face='Courier'>start()</font>, the program no longer executes threads concurrently. Instead, <font face='Courier'>run()</font> executes synchronously in the main thread, blocking each iteration until it completes.",
                 body_style
@@ -126,7 +127,7 @@ def create_pdf():
     # Problem 3
     problem3_content = [
         KeepTogether([
-            Paragraph("<b>Problem 3: Adding Thread.yield() Between Lines 23 and 24 (10 pts)</b>", problem_style),
+            Paragraph("<b>Problem 3: Adding Thread.yield() Between Lines 23 and 24</b>", problem_style),
             Paragraph(
                 "<b style='color:red'>What Changes:</b> Adding <font face='Courier'>Thread.yield()</font> after each character print suggests to the thread scheduler that the current thread is willing to yield its CPU time to other threads.",
                 body_style
@@ -147,7 +148,7 @@ def create_pdf():
     # Problem 4
     problem4_content = [
         KeepTogether([
-            Paragraph("<b>Problem 4: Adding Thread.sleep(500) After Each Character (10 pts)</b>", problem_style),
+            Paragraph("<b>Problem 4: Adding Thread.sleep(500) After Each Character</b>", problem_style),
             Paragraph(
                 "<b>Modification:</b>",
                 body_style
@@ -171,7 +172,7 @@ def create_pdf():
     # Problem 5
     problem5_content = [
         KeepTogether([
-            Paragraph("<b>Problem 5: Adding Thread.sleep(500) After Thread Creation (10 pts)</b>", problem_style),
+            Paragraph("<b>Problem 5: Adding Thread.sleep(500) After Thread Creation</b>", problem_style),
             Paragraph(
                 "<b>Modification (in main method):</b>",
                 body_style
