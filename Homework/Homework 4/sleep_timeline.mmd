@@ -1,0 +1,28 @@
+timeline
+    title Output Patterns: Sleep() Scenarios
+    
+    section Problem 4: Sleep After Print
+        150ms: T1: a
+        200ms: T2: X
+        250ms: T3: +
+        300ms: T4: .
+        500ms: T1: a (awake)
+        550ms: T2: X (awake)
+        600ms: T3: + (awake)
+        650ms: T4: . (awake)
+        note: Very even round-robin pattern
+        note: One character per thread per cycle
+        note: Much longer total time (~100 seconds)
+    
+    section Problem 5: Sleep After Thread Creation
+        0ms: T1 created, starts
+        0-100ms: a a a a a (lots of 'a')
+        500ms: T2 created, starts
+        500ms: a X a X a (interleaving begins)
+        1000ms: T3 created, starts
+        1000ms: X + a X + a (more interleaving)
+        1500ms: T4 created, starts
+        1500ms: + . X a + . (full concurrency)
+        note: Sequential start, then concurrent
+        note: First 200 chars mostly 'a'
+        note: Total time ~20 seconds

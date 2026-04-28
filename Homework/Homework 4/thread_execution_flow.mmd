@@ -1,0 +1,16 @@
+flowchart TD
+    Start([Loop Start: for each String s])
+    
+    Start --> CreateRun["ps = PrintChar(s, 200)<br/>ts = new Thread(ps)"]
+    
+    CreateRun --> Decision{Method Called}
+    
+    Decision -->|ts.start()| StartPath["New Thread Created<br/>run() executes<br/>in new thread"]
+    Decision -->|ts.run()| RunPath["run() executes<br/>in main thread<br/>BLOCKS main thread"]
+    
+    StartPath --> Concurrent["Threads execute<br/>CONCURRENTLY<br/>Non-deterministic<br/>Interleaved Output"]
+    
+    RunPath --> Sequential["Output: All 200 'a'<br/>then all 200 'X'<br/>then all 200 '+'<br/>then all 200 '.'<br/>SEQUENTIAL"]
+    
+    Concurrent --> Unpredictable["Example:<br/>aX.a+X.a+X+..."]
+    Sequential --> Predictable["Example:<br/>aaaa...XXXX..."]
